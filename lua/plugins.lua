@@ -193,6 +193,7 @@ return {
         require('nvim-treesitter.configs').setup {
             ensure_installed = {
                 "typescript",
+                "haskell",
                 "javascript",
                 "c",
                 "rust",
@@ -252,7 +253,8 @@ return {
                 ensure_installed = {
                     "rust_analyzer",
                     "lua_ls",
-                    "tsserver"
+                    "tsserver",
+                    "hls"
                 }
             })
             require("mason-lspconfig").setup_handlers({
@@ -287,6 +289,14 @@ return {
                 vim.lsp.diagnostic.on_publish_diagnostics, { virtual_text = false }
             )
         end
+    },
+    {
+        'mrcjkb/haskell-tools.nvim',
+        version = '^3', -- Recommended
+        ft = { 'haskell', 'lhaskell', 'cabal', 'cabalproject' },
+        init = function()
+            vim.g.haskell_tools = {}
+        end,
     }
 }
 

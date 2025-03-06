@@ -106,4 +106,20 @@ return {
             vim.g.haskell_tools = {}
         end,
     }
+    --[[
+    {
+        'cordx56/rustowl',
+        dependencies = {
+            'neovim/nvim-lspconfig'
+        },
+        ft = 'rust',
+
+        config = function ()
+            local lspconfig = require("lspconfig")
+            lspconfig.rustowl.setup({})
+
+            vim.keymap.set('n', '<leader>oo', require('rustowl').rustowl_cursor)
+        end
+    }
+    --]]
 }

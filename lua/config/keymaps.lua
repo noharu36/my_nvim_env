@@ -45,6 +45,12 @@ vim.keymap.set("n", "<leader>ff", function() require("telescope.builtin").find_f
 -- ドットファイルを検索対象にするファイル検索
 -- vim.keymap.set("n", "<Leader>ff", ":Telescope find_files hidden=true<CR>", {})
 
+-- コードジャンプ
+vim.keymap.set('n', '<leader>gj', function() vim.cmd('vsplit') vim.cmd('wincmd l') vim.lsp.buf.definition() end, {})
+
+-- 参照箇所の表示・ジャンプ
+vim.keymap.set('n', '<leader>gk', function() vim.lsp.buf.references() end, {})
+
 -- テキスト検索
 vim.keymap.set("n", "<leader>fg", function() require("telescope.builtin").live_grep() end, {})
 

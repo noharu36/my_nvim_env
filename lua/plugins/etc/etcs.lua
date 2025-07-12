@@ -21,9 +21,16 @@ return {
     },
     {
         "lewis6991/gitsigns.nvim",
-        cofig = function ()
-            require('gitsigns').setup({
-                current_line_blame = true,
+    },
+    {
+        "f-person/git-blame.nvim",
+        event = "VeryLazy",
+        config = function ()
+            require('gitblame').setup({
+                enabled = true,
+                message_template = " <date> • <author> • <summary>",
+                date_format = "%m-%d-%Y %H:%M:%S",
+                virtual_text_column = 1,
             })
         end
     }

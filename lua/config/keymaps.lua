@@ -22,6 +22,15 @@ vim.keymap.set("n", "sk", "<C-w>k")
 vim.keymap.set("n", "sl", "<C-w>l")
 vim.keymap.set("n", "sw", "<C-w>w")
 vim.keymap.set("n", "s", "<Nop>")
+local resize = function(win, amt, dir)
+    return function()
+        require("winresize").resize(win, amt, dir)
+    end
+end
+vim.keymap.set("n", "rh", resize(0, 2, "left"))
+vim.keymap.set("n", "rj", resize(0, 1, "down"))
+vim.keymap.set("n", "rk", resize(0, 1, "up"))
+vim.keymap.set("n", "rl", resize(0, 2, "right"))
 -- vim.keymap.set('i', '<Tab>',   [[pumvisible() ? "\<C-n>" : "\<Tab>"]],   { expr = true })
 
 vim.g.mapleader = " "
@@ -46,10 +55,10 @@ vim.keymap.set("n", "<leader>ff", function() require("telescope.builtin").find_f
 -- vim.keymap.set("n", "<Leader>ff", ":Telescope find_files hidden=true<CR>", {})
 
 -- コードジャンプ
-vim.keymap.set('n', '<leader>gj', function() vim.cmd('vsplit') vim.cmd('wincmd l') vim.lsp.buf.definition() end, {})
+-- vim.keymap.set('n', '<leader>gj', function() vim.cmd('vsplit') vim.cmd('wincmd l') vim.lsp.buf.definition() end, {})
 
 -- 参照箇所の表示・ジャンプ
-vim.keymap.set('n', '<leader>gk', function() vim.lsp.buf.references() end, {})
+-- vim.keymap.set('n', '<leader>gk', function() vim.lsp.buf.references() end, {})
 
 -- テキスト検索
 vim.keymap.set("n", "<leader>fg", function() require("telescope.builtin").live_grep() end, {})

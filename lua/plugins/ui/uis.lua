@@ -16,6 +16,13 @@ return {
             require('nvim-autopairs').setup({})
         end
     },
+    {
+        'MeanderingProgrammer/render-markdown.nvim',
+        dependencies = { 'nvim-treesitter/nvim-treesitter' },
+        ---@module 'render-markdown'
+        ---@type render.md.UserConfig
+        opts = {},
+    },
     --[[
     {
         "lukas-reineke/indent-blankline.nvim",

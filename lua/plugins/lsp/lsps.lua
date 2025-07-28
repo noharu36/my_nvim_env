@@ -1,13 +1,15 @@
 return {
     {
-        "williamboman/mason.nvim",
+        "mason-org/mason.nvim",
+        version = "^1.0.0",
         build = ":MasonUpdate",
         opts = {},
     },
     {
-        "williamboman/mason-lspconfig.nvim",
+        "mason-org/mason-lspconfig.nvim",
+        version = "^1.0.0",
         dependencies = {
-            { "williamboman/mason.nvim" },
+            { "mason-org/mason.nvim" },
             { "neovim/nvim-lspconfig" },
             {
                 "hrsh7th/nvim-cmp",
@@ -21,6 +23,7 @@ return {
                 },
             }
         },
+        event = { "BufReadPre", "BufNewFile" },
         config = function()
             local lspconfig = require("lspconfig")
             local cmp = require("cmp")
@@ -60,11 +63,11 @@ return {
                     "rust_analyzer",
                     "lua_ls",
                     "gopls",
-                    "tsserver",
+                    "ts_ls",
                     "hls"
                 }
             })
-            require("mason-lspconfig").setup_handlers({
+            --[[require("mason-lspconfig").setup_handlers({
                 function(server_name)
                     lspconfig[server_name].setup({
                         capabilities = capabilities
@@ -76,6 +79,7 @@ return {
                 ["rust-analyzer"] = function()
                 end,
             })
+            --]]
 
             vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
                 vim.lsp.diagnostic.on_publish_diagnostics, { virtual_text = false }

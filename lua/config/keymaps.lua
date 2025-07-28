@@ -50,6 +50,7 @@ vim.keymap.set("n", "<Leader>q<CR>", ":q<CR>")
 
 vim.api.nvim_create_autocmd("LspAttach", {
     callback = function(_)
+
         vim.keymap.set('n', 'K',  '<cmd>lua vim.lsp.buf.hover()<CR>')
         vim.keymap.set('n', 'gf', '<cmd>lua vim.lsp.buf.formatting()<CR>')
         vim.keymap.set('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>')
@@ -95,7 +96,7 @@ vim.keymap.set("n", "<leader>fo", function() require("telescope.builtin").oldfil
 vim.keymap.set("n", "<leader>fc", function() require("telescope.builtin").colorscheme() end, {})
 
 -- vim_optionsの一覧
-vim.keymap.set("n", "<leader>fv", function() require("telescope.builtin").vim_options() end, {})
+-- vim.keymap.set("n", "<leader>fv", function() require("telescope.builtin").vim_options() end, {})
 
 -- keymapの一覧
 vim.keymap.set("n", "<leader>fk", function() require("telescope.builtin").keymaps() end, {})
@@ -104,7 +105,14 @@ vim.keymap.set("n", "<leader>fk", function() require("telescope.builtin").keymap
 vim.keymap.set("n", "<leader>fr", function() require("telescope.builtin").registers() end, {})
 
 -- nvim設定ファイルへのアクセス
-vim.keymap.set("n", "<Leader>fn", ":Telescope find_files cwd=~/.config/nvim<CR>", {})
+vim.keymap.set("n", "<Leader>fv", ":Telescope find_files cwd=~/.config/nvim<CR>", {})
+
+-- 通知のログ
+vim.keymap.set("n", "<Leader>fn", function ()
+    local telescope = require 'telescope'
+    telescope.load_extension 'notify'
+    telescope.extensions.notify.notify()
+end)
 
 vim.keymap.set("n", "x", "\"_x")
 

@@ -9,8 +9,7 @@ vim.opt.writebackup = false
 vim.opt.hidden = true -- バッファを切り替えるときにファイルを保存しなくてもOKに
 
 -- クリップボード共有
-vim.opt.clipboard:append({'unnamedplus'})
-
+vim.opt.clipboard = "unnamedplus"
 -- メニューとコマンド
 vim.opt.wildmenu = true -- コマンドラインで補完
 vim.opt.cmdheight = 1 -- コマンドラインの表示行数
@@ -30,11 +29,12 @@ vim.opt.autoindent = true -- 自動インデントを有効にする
 vim.opt.smartindent = true -- インデントをスマートに調整する
 
 -- 表示
+vim.opt.termguicolors = true
 vim.opt.number = true -- 行番号を表示
 vim.opt.wrap = true -- テキストの自動折り返しを無効に
 vim.opt.showtabline = 1 -- タブラインを表示
 vim.opt.pumblend = 30
-vim.opt.winblend = 30
+vim.opt.winblend = 0
 vim.opt.visualbell = true -- ビープ音を表示する代わりに画面をフラッシュ
 vim.opt.showmatch = true -- 対応する括弧をハイライト表示
 vim.opt.termguicolors = true

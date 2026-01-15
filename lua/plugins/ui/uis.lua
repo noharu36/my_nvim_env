@@ -16,13 +16,6 @@ return {
             require('nvim-autopairs').setup({})
         end
     },
-    {
-        'MeanderingProgrammer/render-markdown.nvim',
-        dependencies = { 'nvim-treesitter/nvim-treesitter' },
-        ---@module 'render-markdown'
-        ---@type render.md.UserConfig
-        opts = {},
-    },
     --[[
     {
         "lukas-reineke/indent-blankline.nvim",
@@ -104,7 +97,7 @@ return {
             })
         end
     },
-        {
+    {
         'nvim-treesitter/nvim-treesitter',
         event = {'BufNewFile', 'BufRead'},
         build = ":TSUpdate",
@@ -119,6 +112,7 @@ return {
                 "python",
                 "go",
                 "lua",
+                "nix",
                 "bash",
                 "html",
                 "css",
@@ -141,6 +135,13 @@ return {
             },
         }
         end
+    },
+    {
+        'MeanderingProgrammer/render-markdown.nvim',
+        dependencies = { 'nvim-treesitter/nvim-treesitter' },
+        ---@module 'render-markdown'
+        ---@type render.md.UserConfig
+        opts = {},
     },
 }
 

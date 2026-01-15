@@ -63,23 +63,11 @@ return {
                     "rust_analyzer",
                     "lua_ls",
                     "gopls",
+                    "nil_ls",
                     "ts_ls",
-                    "hls"
+                    "hls",
                 }
             })
-            --[[require("mason-lspconfig").setup_handlers({
-                function(server_name)
-                    lspconfig[server_name].setup({
-                        capabilities = capabilities
-                    })
-                end,
-                ["vtsls"] = function()
-                    lspconfig["vtsls"].setup({})
-                end,
-                ["rust-analyzer"] = function()
-                end,
-            })
-            --]]
 
             vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
                 vim.lsp.diagnostic.on_publish_diagnostics, { virtual_text = false }
@@ -94,20 +82,4 @@ return {
             vim.g.haskell_tools = {}
         end,
     }
-    --[[
-    {
-        'cordx56/rustowl',
-        dependencies = {
-            'neovim/nvim-lspconfig'
-        },
-        ft = 'rust',
-
-        config = function ()
-            local lspconfig = require("lspconfig")
-            lspconfig.rustowl.setup({})
-
-            vim.keymap.set('n', '<leader>oo', require('rustowl').rustowl_cursor)
-        end
-    }
-    --]]
 }

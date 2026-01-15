@@ -34,7 +34,7 @@ vim.keymap.set("n", "rl", resize(0, 2, "right"))
 -- vim.keymap.set('i', '<Tab>',   [[pumvisible() ? "\<C-n>" : "\<Tab>"]],   { expr = true })
 
 vim.g.mapleader = " "
-vim.keymap.set("n", "<Leader>y", "@y")
+vim.keymap.set("n", "<Leader>y", ":%y<CR>")
 vim.keymap.set("n", "<Leader>tn", ":tabnew<CR>")
 vim.keymap.set("n", "<Leader>th", "gt")
 vim.keymap.set("n", "<Leader>tl", "gT")

@@ -41,3 +41,6 @@ vim.opt.termguicolors = true
 
 -- インタフェース
 vim.opt.signcolumn = "yes" -- サインカラムを表示
+
+-- 警告を消すため
+vim.deprecate = function() end

@@ -1,13 +1,13 @@
 return {
     {
         "mason-org/mason.nvim",
-        version = "^1.0.0",
+        -- version = "^1.0.0",
         build = ":MasonUpdate",
         opts = {},
     },
     {
         "mason-org/mason-lspconfig.nvim",
-        version = "^1.0.0",
+        -- version = "^1.0.0",
         dependencies = {
             { "mason-org/mason.nvim" },
             { "neovim/nvim-lspconfig" },
@@ -25,7 +25,6 @@ return {
         },
         event = { "BufReadPre", "BufNewFile" },
         config = function()
-            local lspconfig = require("lspconfig")
             local cmp = require("cmp")
             cmp.setup({
                 snippet = {
@@ -57,7 +56,6 @@ return {
                     }
                 )
             })
-            local capabilities = require('cmp_nvim_lsp').default_capabilities()
             require('mason-lspconfig').setup({
                 ensure_installed = {
                     "rust_analyzer",

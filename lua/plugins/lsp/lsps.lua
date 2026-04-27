@@ -26,6 +26,7 @@ return {
         event = { "BufReadPre", "BufNewFile" },
         config = function()
             local cmp = require("cmp")
+
             cmp.setup({
                 snippet = {
                     expand = function(args)
@@ -42,8 +43,14 @@ return {
                     ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
                 }),
                 window = {
-                    completion = cmp.config.window.bordered(),
-                    documentation = cmp.config.window.bordered(),
+                    completion = cmp.config.window.bordered({
+                        border = "rounded",
+                        winhighlight = "Normal:CmpNormal,FloatBorder:CmpBorder,CursorLine:CmpSel,Search:None",
+                    }),
+                    documentation = cmp.config.window.bordered({
+                        border = "rounded",
+                        winhighlight = "Normal:CmpDoc,FloatBorder:CmpDocBorder",
+                    }),
                 },
                 sources = cmp.config.sources(
                     {

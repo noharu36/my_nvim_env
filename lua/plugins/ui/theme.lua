@@ -25,6 +25,34 @@ return {
             })
             vim.o.background = "dark"
             vim.cmd('colorscheme gruvbox')
+
+            -- Gruvbox Dark 向け cmp ウィンドウハイライト
+            vim.api.nvim_set_hl(0, "CmpNormal", { bg = "#3c3836", fg = "#ebdbb2" })
+            vim.api.nvim_set_hl(0, "CmpBorder", { bg = "#3c3836", fg = "#8ec07c" })
+            vim.api.nvim_set_hl(0, "CmpSel", { bg = "#504945", fg = "#ebdbb2", bold = true })
+            vim.api.nvim_set_hl(0, "CmpItemAbbrMatch", { fg = "#8ec07c", bold = true })
+            vim.api.nvim_set_hl(0, "CmpItemAbbrMatchFuzzy", { fg = "#8ec07c" })
+            vim.api.nvim_set_hl(0, "CmpDoc", { bg = "#3c3836", fg = "#ebdbb2" })
+            vim.api.nvim_set_hl(0, "CmpDocBorder", { bg = "#3c3836", fg = "#a89984" })
+
+            -- LSP フローティングウィンドウ (hover, diagnostic等) のハイライト
+            vim.api.nvim_set_hl(0, "NormalFloat", { bg = "#3c3836", fg = "#ebdbb2" })
+            vim.api.nvim_set_hl(0, "FloatBorder", { bg = "#3c3836", fg = "#a89984" })
+
+            -- hover ウィンドウにボーダーを追加
+            vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(
+                vim.lsp.handlers.hover, { border = "rounded" }
+            )
+
+            -- signature help ウィンドウにもボーダーを追加
+            vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(
+                vim.lsp.handlers.signature_help, { border = "rounded" }
+            )
+
+            -- diagnostic float にもボーダーを適用
+            vim.diagnostic.config({
+                float = { border = "rounded" },
+            })
         end
     },
 
